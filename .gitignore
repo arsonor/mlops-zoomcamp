@@ -135,6 +135,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+exp-tracking-env
 
 # Spyder project settings
 .spyderproject
