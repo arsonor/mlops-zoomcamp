@@ -1,0 +1,19 @@
+# prefect.yaml
+
+name: monthly-taxi-training
+prefect-version: 3.4.3
+
+entrypoint: duration-prediction.py:main
+
+# Parameters to use if no override is passed
+parameters:
+  color: "green"
+
+schedule:
+  cron: "0 9 1 * *"  # At 09:00 UTC on the 1st of each month
+  timezone: "UTC"
+
+description: >
+  Trains an XGBoost model on NYC taxi data using MLflow.
+  Uses data from 2 months ago for training and 1 month ago for validation.
+  Can be configured for either green or yellow trip records.
