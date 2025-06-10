@@ -1,7 +1,7 @@
 # prefect.yaml
 
 name: monthly-taxi-training
-prefect-version: 3.4.3
+prefect-version: 2.20.19
 
 entrypoint: duration-prediction.py:main
 
@@ -15,5 +15,5 @@ schedule:
 
 description: >
   Trains an XGBoost model on NYC taxi data using MLflow.
-  Uses data from 2 months ago for training and 1 month ago for validation.
+  Uses data from 6 months ago for training and 5 month ago for validation.
   Can be configured for either green or yellow trip records.

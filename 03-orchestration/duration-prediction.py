@@ -95,8 +95,8 @@ def main(execution_date: datetime = None, color: str = "green"):
         context = get_run_context()
         execution_date = context.flow_run.expected_start_time
 
-    train_date = execution_date - relativedelta(months=2)
-    val_date = execution_date - relativedelta(months=1)
+    train_date = execution_date - relativedelta(months=6)
+    val_date = execution_date - relativedelta(months=5)
 
     df_train = read_dataframe(train_date.year, train_date.month, color)
     df_val = read_dataframe(val_date.year, val_date.month, color)
