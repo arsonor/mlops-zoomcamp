@@ -5,7 +5,6 @@ name = "pypi"
 
 [packages]
 mlflow = "*"
-jupyter = "*"
 fastparquet = "*"
 boto3 = "*"
 pandas = "*"

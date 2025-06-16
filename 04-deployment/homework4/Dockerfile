@@ -12,4 +12,4 @@ RUN pipenv install --system --deploy
 
 COPY batch_scoring.py .
 
-ENTRYPOINT ["pipenv", "run", "python", "batch_scoring.py"]
+ENTRYPOINT ["python", "batch_scoring.py"]
