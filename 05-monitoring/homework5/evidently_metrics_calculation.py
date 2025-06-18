@@ -9,7 +9,6 @@ import io
 import psycopg
 import joblib
 
-from prefect import task, flow
 
 from evidently import Report
 from evidently import DataDefinition
@@ -58,7 +57,6 @@ CONNECTION_STRING = "host=localhost port=5432 user=postgres password=example"
 CONNECTION_STRING_DB = CONNECTION_STRING + " dbname=test"
 
 
-@task
 def prep_db():
 	with psycopg.connect(CONNECTION_STRING, autocommit=True) as conn:
 		res = conn.execute("SELECT 1 FROM pg_database WHERE datname='test'")
@@ -67,7 +65,6 @@ def prep_db():
 		with psycopg.connect(CONNECTION_STRING_DB) as conn:
 			conn.execute(create_table_statement)
 
-@task
 def calculate_metrics_postgresql(i):
 	current_data = raw_data[(raw_data.lpep_pickup_datetime >= (begin + datetime.timedelta(i))) &
 		(raw_data.lpep_pickup_datetime < (begin + datetime.timedelta(i + 1)))]
@@ -93,11 +90,10 @@ def calculate_metrics_postgresql(i):
 				(begin + datetime.timedelta(i), prediction_drift, num_drifted_columns, share_missing_values, fare_amount_quantile)
 			)
 
-@flow
 def batch_monitoring_backfill():
 	prep_db()
 	last_send = datetime.datetime.now() - datetime.timedelta(seconds=10)
-	for i in range(0, 27):
+	for i in range(0, 30):
 		calculate_metrics_postgresql(i)
 
 		new_send = datetime.datetime.now()
