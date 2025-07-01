@@ -19,7 +19,7 @@ Now we need to create the "main" block from which we'll invoke
 the main function. How does the `if` statement that we use for
 this looks like? 
 
-**if __name__ == "__main__":**
+**`if __name__ == "__main__":`**
 
 
 Hint: after refactoring, check that the code still works. Just run it e.g. for March 2023 and see if it finishes successfully. 
@@ -44,7 +44,7 @@ the file with tests. We can name it `test_batch.py`.
 
 What should be the other file? 
 
-**__init__.py**
+**`__init__.py`**
 
 Hint: to be able to test `batch.py`, we need to be able to
 import it. Without this other file, we won't be able to do it.
@@ -251,7 +251,7 @@ df_input.to_parquet(
 
 What's the size of the file?
 
-* 3620
+* **3620**
 * 23620
 * 43620
 * 63620
@@ -268,9 +268,9 @@ Use AWS CLI with Localstack:
 ```
 aws --endpoint-url=http://localhost:4566 s3 ls s3://nyc-duration/in/
 ```
-We should see something like:
+I obtain this:
 ```
-2025-06-26  00:00:00       23620  2023-01.parquet
+2025-07-01 14:13:17       3215 2023-01.parquet
 ```
 
 ## Q6. Finish the integration test
@@ -294,7 +294,7 @@ verify the result is correct.
 What's the sum of predicted durations for the test dataframe?
 
 * 13.08
-* 36.28
+* **36.28**
 * 69.28
 * 81.08
 
