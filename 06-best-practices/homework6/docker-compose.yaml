@@ -1,0 +1,13 @@
+services:
+  localstack:
+    image: localstack/localstack:3.0
+    container_name: localstack
+    ports:
+      - "4566:4566"  # Main edge port for all AWS services
+    environment:
+      - SERVICES=s3                # Only enable S3
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - ./localstack-data:/var/lib/localstack   # Persist data
+      - /var/run/docker.sock:/var/run/docker.sock
